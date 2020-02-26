@@ -501,13 +501,3 @@ function initMap() {
 	});
 }
 
-( function( $ ) {
-	'use strict';
-	
-	// load html
-	$.get("index.html", function (data) {
-        $('body').append(data);
- 		console.log(data);
-    });
-	
-} )( jQuery );
