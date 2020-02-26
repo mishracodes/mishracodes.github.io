@@ -1,12 +1,4 @@
-/*
-*   Author: beshleyua
-*   Author URL: http://themeforest.net/user/beshleyua
-*/
 
-
-/*
-	Preloader
-*/
 
 $(window).on("load", function() {
 	var preload = $('.preloader');
