@@ -1,0 +1,218 @@
+
+
+:root {
+  --white: #ffffff;
+  --colorPrimaryDark: #151c25;
+  --colorAccent:#f1b814;
+  --darker_gray:#a9a9a9;
+  --light_gray:#d3d3d3 ;
+  --light_blue:#72B1F4;
+  --text_light_blue:#566f9a;
+  --bg_light_blue:#1a242f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--colorAccent);
+  background-color: var(--bg_light_blue);
+  font-size: 1.8rem;
+}
+#contact a{
+  text-decoration: none;
+  color: var(--light_blue);
+}
+
+#welcome-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 6rem;
+ 
+}
+
+p{
+  font-size:2.5rem;
+}
+
+h2{
+  font-size: 3.5rem;
+}
+
+@media (max-width: 28.75em) {
+#welcome-section h1{
+  font-size: 3rem;
+}
+  #welcome-section p{
+  font-size: 2rem;
+}
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--colorPrimaryDark);
+  z-index: 2;
+  border-bottom: 1px solid var(--colorAccent);
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+}
+
+nav ul li{
+  margin: 10px 20px;
+  
+}
+
+nav ul li a{
+  text-decoration: none;
+  color: var(--white);
+  font-size: 3rem;
+}
+
+nav ul li a:hover{
+  color: var(--colorAccent);
+}
+
+@media (max-width: 28.75em) {
+  .nav {
+    justify-content: center;
+  }
+
+  .nav-list {
+    margin: 0 1rem;
+  }
+}
+
+#contact{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  color: var(--white);
+}
+#contact h1{
+  margin-bottom:20px;
+}
+#contact p{
+  margin-bottom:20px;
+}
+
+#contact a{
+  margin:20px;
+  font-size:4rem;
+  color:var(--white);
+}
+#contact a:hover{
+  color:var(--colorAccent);
+}
+
+footer {
+  font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  background: var(--colorPrimaryDark);
+  border-top: 1px solid var(--colorAccent);
+}
+
+footer a{
+  text-decoration: none;
+ color: var(--light_blue);
+}
+
+#projects{
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  padding:8rem 3rem;
+  color: var(--white);
+}
+
+#projects h2{
+  max-width:600px;
+  margin:0 auto 4rem auto;
+  
+}
+
+@media (max-width: 28.75em) {
+  .projects-section-header {
+    font-size: 2.5rem;
+  }
+
+}
+
+
+.project-card {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+  justify-items:center;
+}
+
+.project-tile a{
+   text-decoration: none;
+  
+}
+
+
+
+.p-image {
+  height: calc(100% - 6.8rem);
+  width: 100%;
+  object-fit: cover;
+}
+
+.p-caption {
+  font-size: 2rem;
+  padding: 2rem 0.5rem;
+  font-size:3rem;
+  color:var(--white);
+}

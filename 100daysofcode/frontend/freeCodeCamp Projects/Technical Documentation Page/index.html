@@ -1,0 +1,292 @@
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+<!-- 
+
+Hello Camper!
+
+For now, the test suite only works in Chrome! Please read the README below in the JS Editor before beginning. Feel free to delete this message once you have read it. Good luck and Happy Coding! 
+
+- The freeCodeCamp Team 
+
+-->
+
+<html>
+  <head>
+    <title>Oracle Documentation</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>Oracle Documentation</header>
+      <ul>
+    	<li><a class="nav-link" href="#Introduction">Introduction</a></li>
+    	<li><a class="nav-link" href="#Oracle_Database_Architecture">Oracle Database Architecture</a></li>
+    	<li><a class="nav-link" href="#Database_Instance">Database Instance</a></li>
+    	<li><a class="nav-link" href="#System_Global_Area">System Global Area</a></li>
+    	<li><a class="nav-link" href="#Program_Global_Area">Program Global Area</a></li>
+    	<li><a class="nav-link" href="#Background_Processes">Background Processes</a></li>
+    	<li><a class="nav-link" href="#Database_System_Files">Database System Files</a></li>
+    	<li><a class="nav-link" href="#Oracle_Objects">Oracle Objects</a></li>
+   	  </ul>
+    </nav>
+    <main id="main-doc">
+
+    <section id="Introduction" class="main-section">
+      <header>Introduction</header>
+      <p>
+        Oracle Database  is a multi-model database management system.
+It is a database commonly used for running online transaction processing (OLTP), data warehousing (DW) and database workloads.
+      </p>
+    <p>An Oracle Database consists of at least one database instance and one database. The database instance handles memory and processes. The database consists of physical files called data files, and can be a non-container database or a multitenant container database. An Oracle Database also uses several database system files during its operation.<br><br>
+
+A single-instance database architecture consists of one database instance and one database. A one-to-one relationship exists between the database and the database instance. Multiple single-instance databases can be installed on the same server machine. There are separate database instances for each database. This configuration is useful to run different versions of Oracle Database on the same machine.</p>
+    </section>
+      
+      
+      
+      <section id="Oracle_Database_Architecture" class="main-section">
+    <header>Oracle Database Architecture</header>
+        <p> These are the basic database architecture.</p>
+    <ul>
+      <li>Instance
+	      <ul>
+	      	<li>SGA
+	      		<ul>
+			      	<li>Shared Pool
+			      		<ul>
+					      	<li>Library Cache</li>
+					      	<li>Data Dictionary</li>
+					    </ul>
+			      	</li>
+			      	<li>Buffer Cache</li>
+			      	<li>Redo Log Buffer</li>
+			      	<li>Large Pool</li>
+			      	<li>Java Pool</li>
+			      </ul>
+	      	</li>
+	      	<li>PGA</li>
+	      	<li>Process
+	      		<ul>
+					<li>SMON</li>
+					<li>PMON</li>
+					<li>Db Write</li>
+					<li>Log Write</li>
+					<li>Check Point</li>
+				</ul>
+	      	</li>
+	      </ul>
+	   </li>
+
+      <li>Database
+      	<ul>
+			<li>Datafile
+				<ul>
+					<li>Data</li>
+					<li>Metadata</li>
+				</ul>
+			</li>
+			<li>Control File</li>
+			<li>Redo Log File</li>
+			<li>Parameter</li>
+			<li>Password</li>
+		</ul>
+      </li>
+
+    </ul>
+        
+    </section>
+      
+      
+      
+      
+      <section id="Database_Instance" class="main-section">
+    <header>Database Instance</header>
+    <p>A database instance contains a set of Oracle Database background processes and memory structures. The
+main memory structures are the System Global Area (SGA) and the Program Global Areas (PGAs). The
+background processes operate on the stored data (data files) in the database and use the memory structures to
+do their work. A database instance exists only in memory.
+</p>
+<p><strong>Basically, A database instance contains a set of Oracle Database
+  background processes and memory structures. </strong>
+  
+        </p>
+       <p>It has three different parts
+SGA,
+PGA and Process</p>
+    </section>
+      
+      
+      
+      
+      <section id="System_Global_Area" class="main-section">
+    <header>System Global Area</header>
+    <p>The System Global Area (SGA) is the memory area that contains data and control information for one Oracle
+Database instance. All server and background processes share the SGA. When you start a database instance,
+the amount of memory allocated for the SGA is displayed.</p>
+
+<ol>
+<li><strong>Shared pool:</strong> It contains Library Cache and Data Dictionary Cache.
+	It is the memory area where all executables are available like PL/SQL.
+<ol><li><strong>Library cache:</strong> Is a memory area where oracle will store SQL statements.</li>
+<li><strong>Data dictionary cache:</strong> it is a memory area which Stores information about database objects. It is like metadata of data
+file.</li></ol></li>
+<li><strong>Database buffer cache:</strong> It temporarily contains whatever is the output after a query is executed on database.</li>
+<li><strong>Redo log buffer:</strong> It will log all changes Whenever we make any changes into database.</li>
+<li><strong>Large pool:</strong> It is large memory area which is used to store Backup and Recovery and other process which requires large memory area.</li>
+<li><strong>Java pool:</strong> Is used to store all Java code and JVM executables.</li>
+</ol>
+    </section>
+    
+    
+
+    <section id="Program_Global_Area" class="main-section">
+    <header>Program Global Area</header>
+    <p>The Program Global Area (PGA) is a non-shared memory region that contains data and control information
+exclusively for use by server and background processes. Oracle Database creates server processes to handle
+connections to the database on behalf of client programs. In a dedicated server environment, one PGA gets
+created for each server and background process that is started. Each PGA consists of stack space and a User
+Global Area (UGA). A PGA is deallocated when the associated server or background process using it is
+terminated.</p>
+    </section>
+
+
+      <section id="Background_Processes" class="main-section">
+    <header>Background Processes</header>
+    <p>Background processes are part of the database instance and perform
+maintenance tasks required to operate the database and to maximize
+performance for multiple users.</p>
+
+<ol>
+<li><strong>Process Monitor Process (PMON)</strong>
+It takes care of all process if there is some process failure it calls necessary process for recovery.</li>
+<li><strong>System Monitor Process (SMON)</strong>
+It performs many database maintenance tasks, like:
+<ul>
+<li>Creates and manages the temporary tablespace metadata</li>
+<li>Responsible for recovery</li>
+</ul></li>
+<li><strong>Database Writer Process (DBWn)</strong>
+Whenever we make any changes to buffer cache it is temporary, So dbWrite is used to write all changes to data file using
+dirty buffer.</li>
+<li><strong>Checkpoint Process (CKPT)</strong>
+It is responsible to synchronization of redo log file and data file.</li>
+<li><strong>Log Writer Process (LGWR)</strong>
+It is responsible for makaking log to redo log buffer for any changes made to buffer cache.</li>
+</ol>
+    </section>
+
+
+
+
+    <section id="Database_System_Files" class="main-section">
+    <header>Database System Files</header>
+    <p>The following database system files are used during the
+operation of an Oracle Database and reside on the database
+server.
+</p>
+
+<ol>
+<li><strong>Datafiles</strong>
+It contain all the database data.</li>
+<li><strong>Control Files</strong>
+It is a file which stores metadata about the data files and redo log files.</li>
+<li><strong>Redo Log Files</strong>
+It is used to record all changes made to data.</li>
+<li><strong>Parameter Files</strong>
+It defines how the database instance is configured when it starts up.</li>
+<li><strong>Password file</strong>
+It is optional file which stores passwords used to connect remotely to the database instance and perform administrative tasks.</li>
+</ol>
+    </section>
+
+
+
+
+
+    <section id="Oracle_Objects" class="main-section">
+    <header>Oracle Objects</header>
+    <p>Oracle object types are user-defined types that make it possible to model real-world entities, such as customers
+and purchase orders, as objects in the database.</p>
+<p>
+For example, you use address which comprises of streetno, locality, city, pin, country, in
+many tables. You define these columns in each table separately like, </p>
+<p>Employee Table</p>
+<code>
+create table emp (empno number(5),<br>
+Name varchar2(20),<br>
+Sal number(10,2),<br>
+Streetno varchar2(20),<br>
+Locality varchar2(20),<br>
+City varchar2(20),<br>
+Pin varchar2(7),<br>
+Country varchar2(20));
+</code>
+<p>Customers Table</p>
+<code>
+create table customers (custcode number(5),<br>
+Name varchar2(20),<br>
+Bal number(10,2),<br>
+Streetno varchar2(20),<br>
+Locality varchar2(20),<br>
+City varchar2(20),<br>
+Pin varchar2(7),<br>
+Country varchar2(20)); 
+</code>
+
+<p>Instead of defining address columns again and again in each table, you can define an address datatype and then use
+this user defined datatype in all tables. </p>
+
+<h3>Defining an Object Type</h3>
+<p>
+The following example create an object type,</p>
+<code>
+create type address as object (<br>
+Streetno varchar2(20),<br>
+Locality varchar2(20),<br>
+City varchar2(20),<br>
+Pin varchar2(7),<br>
+Country varchar2(20));
+</code>
+<p>
+Now you can use this datatype while defining tables emp and customer like this,</p>
+
+<p>Employee Table</p>
+<code>
+create table emp (empno number(5),<br>
+Name varchar2(20),<br>
+Sal number(10,2),<br>
+Emp_addr address);
+</code>
+<p>Customers Table</p>
+<code>
+create table customers (custcode number(S),<br>
+Name varchar2(20),<br>
+Bal number(10,2),<br>
+Cust addr address); 
+</code>
+
+<h3>
+Inserting Records in tables with object datatypes.
+</h3>
+<p>
+To insert record into emp table you have to give the following statement:</p>
+<code>
+insert into emp values(101/Sami',2000,address(“R.C.Gaurds”,”Roacr”, 5000041. “Hyd”,”India”) );</code>
+<p>
+To update city of employee number 101 you have to give the following update statement:</p>
+<code>
+update emp set emp_addr.city='Bombay' where empno=101;</code>
+<p>To select rows from emp table give the following statement</p>
+<code>
+select * from emp;</code>
+<p>
+To select only empno,name and city give the following statement:</p>
+<code>
+select empno,name, emp_addr.city from emp; </code>
+    </section>
+    
+
+
+</main>
+  </body>
+</html>
